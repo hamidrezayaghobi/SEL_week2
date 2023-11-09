@@ -1,9 +1,9 @@
-package PaymentServices;
+package PhaseOne.PaymentServices;
 
 public class OnlineOrderService implements OrderService {
     @Override
     public void onSiteOrderRegister(String customerName) {
-        //Empty Body!
+        // Not Implemented
     }
 
     @Override
@@ -13,12 +13,22 @@ public class OnlineOrderService implements OrderService {
 
     @Override
     public void onSiteOrderPayment(int foodPrice) {
-        //Empty Body
+        // Not Implemented
     }
 
     @Override
     public void onlineOrderPayment(int foodPrice) {
         System.out.println("online Payment with Price : " + foodPrice + " Tomans!");
+    }
+
+    @Override
+    public void phoneOrderRegister(String customerName) {
+        // Not Implemented
+    }
+
+    @Override
+    public void phoneOrderPayment(int foodPrice) {
+        // Not Implemented
     }
 
 }
