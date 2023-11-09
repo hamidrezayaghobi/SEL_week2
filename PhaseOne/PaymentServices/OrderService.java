@@ -1,4 +1,4 @@
-package PaymentServices;
+package PhaseOne.PaymentServices;
 
 public interface OrderService {
     public void onSiteOrderRegister(String customerName);

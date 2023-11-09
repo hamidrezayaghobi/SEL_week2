@@ -1,7 +1,10 @@
-import PaymentServices.OnSiteOrderService;
-import PaymentServices.OnlineOrderService;
-import PaymentServices.OrderService;
-import PaymentServices.PhoneOrderService;
+package PhaseOne;
+
+import PhaseOne.PaymentServices.OnSiteOrderService;
+import PhaseOne.PaymentServices.OnlineOrderService;
+import PhaseOne.PaymentServices.OrderService;
+import PhaseOne.PaymentServices.PhoneOrderService;
+
 import java.util.Scanner;
 
 public class Main {

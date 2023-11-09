@@ -1,34 +1,35 @@
-package PaymentServices;
+package PhaseOne.PaymentServices;
 
-public class OnlineOrderService implements OrderService {
+public class PhoneOrderService implements OrderService {
+
     @Override
     public void onSiteOrderRegister(String customerName) {
-        // Not Implemented
+        // empty body
     }
 
     @Override
     public void onlineOrderRegister(String customerName) {
-        System.out.println("online order registered for " + customerName);
+        // empty body
     }
 
     @Override
     public void onSiteOrderPayment(int foodPrice) {
-        // Not Implemented
+        // empty body
     }
 
     @Override
     public void onlineOrderPayment(int foodPrice) {
-        System.out.println("online Payment with Price : " + foodPrice + " Tomans!");
+        // empty body
     }
 
     @Override
     public void phoneOrderRegister(String customerName) {
-        // Not Implemented
+        System.out.println("phone order registered for " + customerName);
     }
 
     @Override
     public void phoneOrderPayment(int foodPrice) {
-        // Not Implemented
+        System.out.println("phone Payment with Price : " + foodPrice + " Tomans!");
     }
 
 }

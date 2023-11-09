@@ -1,3 +1,5 @@
+package PhaseOne;
+
 public class Food {
     String foodName;
     int price;
