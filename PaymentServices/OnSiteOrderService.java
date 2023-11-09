@@ -8,7 +8,7 @@ public class OnSiteOrderService implements OrderService {
 
     @Override
     public void onlineOrderRegister(String customerName) {
-        //Empty Body
+        // Not Implemented
     }
 
     @Override
@@ -18,6 +18,17 @@ public class OnSiteOrderService implements OrderService {
 
     @Override
     public void onlineOrderPayment(int foodPrice) {
-        //Empty Body!
+        // Not Implemented
     }
+
+    @Override
+    public void phoneOrderRegister(String customerName) {
+        // Not Implemented
+    }
+
+    @Override
+    public void phoneOrderPayment(int foodPrice) {
+        // Not Implemented
+    }
+
 }

@@ -1,9 +1,9 @@
 public class Food {
     String foodName;
     int price;
-    int quantity =1;
+    int quantity = 1;
 
-    Food(String foodName, int foodPrice){
+    Food(String foodName, int foodPrice) {
         this.foodName = foodName;
         this.price = foodPrice;
     }
