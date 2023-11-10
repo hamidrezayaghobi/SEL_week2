@@ -5,21 +5,45 @@
 ## گام 1
 
 
-| ردیف | مکان تغییر | عنوان تغییر | شرح مختصر تغییر |
+| Row | Location of Change | Change Title | Brief Description of Change |
 | --- | ------------------- | ------------ | --------------------------- |
-| 1   | Order Service       | افزودن تابع پرداخت تلفنی | یک تابع جدید با نام `phoneOrderPayment` اضافه شد |
-| 2   | Order Service       | افزودن تابع ثبت سفارش تلفتی | یک تابع جدید با نام `phoneOrderRegister` اضافه شد |
-| 3   | OnSiteOrderService | Override کردن تابع ثبت سفارش تلفنی | پیاده‌سازی تابع `phoneOrderRegister` از واسط `OrderService` |
-| 4   | OnSiteOrderService | Override کردن تابع پرداخت تلفنی  | پیاده‌سازی تابع `phoneOrderPayment` از واسط `OrderService` |
-| 5   | OnlineOrderService  | Override کردن تابع ثبت سفارش تلفنی | پیاده‌سازی تابع `phoneOrderRegister` از واسط `OrderService` |
-| 6   | OnlineOrderService  | Override کردن تابع پرداخت تلفنی  | پیاده‌سازی تابع `phoneOrderPayment` از واسط `OrderService` |
-| 7   | PhoneOrderService   | افزودن کلاس جدید              | ایجاد کلاس `PhoneOrderService` که واسط `OrderService` را پیاده‌سازی می‌کند |
-| 8   | PhoneOrderService   | Override کردن تابع ثبت سفارش تلفنی | پیاده‌سازی تابع `onSiteOrderRegister` از واسط `OrderService` |
-| 9   | PhoneOrderService   | Override کردن تابع پرداخت تلفنی  | پیاده‌سازی تابع `onSiteOrderPayment` از واسط `OrderService` |
-| 10  | PhoneOrderService   | Override کردن تابع ثبت سفارش آنلاین | پیاده‌سازی تابع `onlineOrderRegister` از واسط `OrderService` |
-| 11  | PhoneOrderService   | Override کردن تابع پرداخت آنلاین  | پیاده‌سازی تابع `onlineOrderPayment` از واسط `OrderService` |
-| 12  | PhoneOrderService   | Override کردن تابع ثبت سفارش تلفنی  | پیاده‌سازی تابع `phoneOrderRegister` از واسط `OrderService` |
-| 13  | PhoneOrderService   | Override کردن تابع پرداخت تلفنی  | پیاده‌سازی تابع `phoneOrderPayment` از واسط `OrderService` |
-| 14  | Main                | تغییر در پیام راهنمای بخش پرداخت | امکان پرداخت تلفنی با وارد کردن شماره 3 اضافه شد |
-| 15  | Main                | امکان ثبت سفارش تلفنی | اضافه کردن شرط برای اجازه ثبت سفارش تلفنی هنگام ورود شماره 3 |
-| 16  | Main                | امکان پرداخت تلفنی | اضافه کردن شرط برای اجازه پرداخت تلفنی برای سفارش‌های تلفنی |
+| 1   | Order Service       | Add Phone Order Payment Function | Added a new void function named `phoneOrderPayment` |
+| 2   | Order Service       | Add Phone Order Register Function | Added a new void function named `phoneOrderRegister` |
+| 3   | PhoneOrderService   | Add New Class for supporting telephone way              | Created the `PhoneOrderService` class implementing the `OrderService` interface |
+| 4   | OnSiteOrderService | Override and Implement Phone Order Register | Implemented `phoneOrderRegister` from the `OrderService` interface |
+| 5   | OnSiteOrderService | Override and Implement Phone Order Payment  | Implemented `phoneOrderPayment` from the `OrderService` interface |
+| 6   | OnlineOrderService  | Override and Implement Phone Order Register | Implemented `phoneOrderRegister` from the `OrderService` interface |
+| 7   | OnlineOrderService  | Override and Implement Phone Order Payment  | Implemented `phoneOrderPayment` from the `OrderService` interface |
+| 8   | PhoneOrderService   | Override and Implement Phone Order Register  | Implemented `phoneOrderRegister` from the `OrderService` interface |
+| 9   | PhoneOrderService   | Override and Implement Phone Order Payment  | Implemented `phoneOrderPayment` from the `OrderService` interface |
+| 10  | PhoneOrderService   | Override and Implement OnSite Order Register | Implemented `onSiteOrderRegister` from the `OrderService` interface |
+| 11  | PhoneOrderService   | Override and Implement OnSite Order Payment | Implemented `onSiteOrderPayment` from the `OrderService` interface |
+| 12  | PhoneOrderService   | Override and Implement Online Order Register | Implemented `onlineOrderRegister` from the `OrderService` interface |
+| 13  | PhoneOrderService   | Override and Implement Online Order Payment  | Implemented `onlineOrderPayment` from the `OrderService` interface |
+| 14  | Main                | Change Payment Method Prompt | Added the option for phone payment by entering the number 3 |
+| 15  | Main                | Allow Phone Order Registration | Added a condition to allow phone order registration when the number 3 is entered |
+| 16  | Main                | Allow Phone Payment           | Added a condition to allow phone payment for phone orders |
+
+در کل 16 تغییر انجام شده است.
+
+## گام 2
+
+| Principle  | Achievements  | Violations  |
+|---|---|---|
+| **Principle 1: Single Responsibility**  | -   | - Payment services are responsible for both registering and paying processes. Order class is responsible for two different jobs (adding food and calculating price). |
+| **Principle 2: Open-Close Principle (OCP)**  | - Adding "Phone Payment" didn't changed the current logic in the main class and no modification was required.  | - For adding new methods all of the codes relating the Order Services must be modified like now that adding phone changed all the classes in the Payment Services objects. |
+| **Principle 3: Liskov Substitution Principle**  | - In the implementation of the "OrderService," the interface is used, and there is an Is-A relationship between the services, so they can implement their corresponding methods.  | - None  |
+| **Principle 4: Interface Segregation Principle**  | - None  | - The "OrderService" interface contains many methods that are unecessary for child classes with many of these methods having no body. |
+| **Principle 5: Dependency Inversion Principle**  | - In the "Main" class, an entity of type "OrderService" is considered, allowing any type of "Order" to be assigned to it.  | - Access to the object of services directly.  |
+
+
+| Principle  | Violation Description  | Proposed Solution  |
+|---|---|---|
+| **Single Responsibility (SRP)**  | multiple responsiblities in the Order class and services | separate register and payment to different classes, and in similar way for calculing the price and adding the price, but in this scopre it is overkilling. |
+| **Open-Close Principle (OCP)**  | modification of service methods | since all service tyeps share a common attribute of registering and paying, the interface be implemented more general and with register and pay abstracct methods rather than specific and detailed methods for each class |
+| **Interface Segregation Principle (ISP)**  | OrderService has many unecessary methods that are not implemented mostly in subclasses | the solution of OCP solves this. |
+| **Dependency Inversion Principle (DIP)**  | Direct access to class objects in the client side | Communication based on abstraction through the use of factory method design pattern which removes this dependency. |
+
+
+
+
