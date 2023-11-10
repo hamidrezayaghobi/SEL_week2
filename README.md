@@ -45,5 +45,8 @@
 | **Dependency Inversion Principle (DIP)**  | Direct access to class objects in the client side | Communication based on abstraction through the use of factory method design pattern which removes this dependency. |
 
 
+## گام 4
 
 
+## گام 5
+به طور کلی با رعایت اصول SOLID، پروژه ما نسبت به تغییرات، چه تغییرات نیازمندی‌ها و چه تغییراتی که در راستای بهبود و یا برطرف کردن یک باگ باشد، به قولی Maintableتر هستش و راحت تر میشه تغییرات رو توش اعمال کرد یا به عبارتی دیگر هزینه تغییرات را برای ما کمتر می‌کند و باعث میشود که نسبت به تغییرات منعطف تر باشیم.
